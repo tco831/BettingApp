@@ -24,10 +24,11 @@ export class MapsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //Send location data to bets component
     this.sender.emit(this.targetAndCurrent);
   }
 
-  //location data
+  //Location variables
   targetLocation = {} as Location; 
   currentLocation = {} as Location;
   targetAndCurrent = {
@@ -35,7 +36,7 @@ export class MapsComponent implements OnInit {
     current: this.currentLocation
   }
   
-  //map and marker calibration
+  //map calibration settings
   zoom: number = 15;
   lastInfoWindow: any;
   markers: any[] = [
@@ -47,7 +48,7 @@ export class MapsComponent implements OnInit {
     }
   ]
 
-  //marker event functions
+  //Marker event data
   markerClicked(marker: any, index: number, infoWindowRef: any) {
     if (this.lastInfoWindow) {
       this.lastInfoWindow.close();
