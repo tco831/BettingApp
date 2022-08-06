@@ -48,7 +48,7 @@ export class BetsComponent implements OnInit {
   }
 
   descriptionValidator(){
-    //make sure string is present
+    //make sure string is
   }
 
   async createBet(stakeInput:any, dateInput:any, descriptionInput:any, outcome:boolean) {
