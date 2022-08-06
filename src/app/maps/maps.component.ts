@@ -35,7 +35,7 @@ export class MapsComponent implements OnInit {
     current: this.currentLocation
   }
   
-  //map calibration
+  //map and marker calibration
   zoom: number = 15;
   lastInfoWindow: any;
   markers: any[] = [
@@ -47,6 +47,7 @@ export class MapsComponent implements OnInit {
     }
   ]
 
+  //marker event functions
   markerClicked(marker: any, index: number, infoWindowRef: any) {
     if (this.lastInfoWindow) {
       this.lastInfoWindow.close();

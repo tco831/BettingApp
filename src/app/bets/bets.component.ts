@@ -19,7 +19,6 @@ export class BetsComponent implements OnInit {
 
   currentTimestamp = Date.now();
   allBets:any[] = [];
-  //can this be changed...
   targetLocation!:Location;
   currentLocation!:Location;
 
@@ -48,7 +47,7 @@ export class BetsComponent implements OnInit {
   }
 
   descriptionValidator(){
-    //make sure string is
+    //make sure string between length 1 and 30 is input
   }
 
   async createBet(stakeInput:any, dateInput:any, descriptionInput:any, outcome:boolean) {
