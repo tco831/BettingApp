@@ -1,0 +1,61 @@
+<h1 class="text-center">BetYouWill</h1>
+
+<div style="padding: 1em">
+
+    <mat-tab-group [backgroundColor]="'primary'" [color]="'warn'">
+        
+        <mat-tab [label]="'Place A Bet'" class="tab">
+            <app-maps (sender)="mapsDataImport($event)" ></app-maps>
+            <br>
+            <div style="text-align: center">
+                <input type="number" #stakeInput placeholder="Enter stake">
+                <input type="datetime-local" #datetimeInput placeholder="Enter date">
+                <input type="string" #descriptionInput placeholder="Enter description">
+                <button (click)="createBet(stakeInput.value, datetimeInput.value, descriptionInput.value, true)">Place Bet</button>
+            </div>
+            <br>
+            <div>
+                <mat-slider 
+                thumbLabel
+                min='1'
+                max='100'
+                name='slidervalue'
+                >
+                </mat-slider>
+            </div>
+            <div style="text-align:center">
+                <a routerLink="/explainer" routerLinkActive="active" ariaCurrentWhenActive="page">How does this work?</a>
+            </div>
+        </mat-tab>
+
+        <mat-tab [label]="'Current Bets'" class="tab">
+            <div *ngFor="let bet of allBets">
+                <div *ngIf="(bet.timestamp>currentTimestamp)">
+                    <hr>
+                    <p> Bet name: {{bet.description}} </p>
+                    <p> Stake: {{bet.stake}} </p>
+                    <p> Deadline time: {{bet.time | date:'shortTime' }}</p>
+                    <p> Date: {{bet.time | date }} </p>
+                    <p> Time remaining : {{bet.timestamp - currentTimestamp}} </p>
+                    <p> Coords: {{bet.coords}}</p>
+                    <button *ngIf="(bet.timestamp - currentTimestamp < 3600000)" (click)="adhocUpdater(bet)">Validate</button>
+                    <button *ngIf="(bet.timestamp - currentTimestamp > 3600000)" (click)="deleteBet(bet)">Cancel</button>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab [label]="'Previous Bets'" class="tab">
+            <div *ngFor="let bet of allBets">
+                <div *ngIf="bet.timestamp<currentTimestamp">
+                    <hr>
+                    <p> Bet name: {{bet.description}} </p>
+                    <p> Stake: {{bet.stake}} </p>
+                    <p> Deadline time: {{bet.time | date:'shortTime' }}</p>
+                    <p> Date: {{bet.time | date }}  </p>
+                    <p> Outcome: {{bet.outcome ? "Lost" : "Won"}}</p>
+                    <p> Coords: {{bet.coords}}</p>
+                </div>
+            </div>
+        </mat-tab>
+
+    </mat-tab-group>

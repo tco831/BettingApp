@@ -1,0 +1,40 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateBet {
+  onCreateBet {
+    id
+    stake
+    time
+    timestamp
+    coords
+    description
+    outcome
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateBet {
+  onUpdateBet {
+    id
+    stake
+    time
+    timestamp
+    coords
+    description
+    outcome
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteBet {
+  onDeleteBet {
+    id
+    stake
+    time
+    timestamp
+    coords
+    description
+    outcome
+    createdAt
+    updatedAt
+  }
+}

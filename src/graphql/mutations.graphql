@@ -1,0 +1,49 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateBet(
+  $input: CreateBetInput!
+  $condition: ModelBetConditionInput
+) {
+  createBet(input: $input, condition: $condition) {
+    id
+    stake
+    time
+    timestamp
+    coords
+    description
+    outcome
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateBet(
+  $input: UpdateBetInput!
+  $condition: ModelBetConditionInput
+) {
+  updateBet(input: $input, condition: $condition) {
+    id
+    stake
+    time
+    timestamp
+    coords
+    description
+    outcome
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteBet(
+  $input: DeleteBetInput!
+  $condition: ModelBetConditionInput
+) {
+  deleteBet(input: $input, condition: $condition) {
+    id
+    stake
+    time
+    timestamp
+    coords
+    description
+    outcome
+    createdAt
+    updatedAt
+  }
+}

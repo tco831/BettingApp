@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-frinight-dev-225237-authRole",
+      "UnauthRoleArn": "arn:aws:iam::230636624958:role/amplify-frinight-dev-225237-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::230636624958:role/amplify-frinight-dev-225237-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-frinight-dev-225237-deployment",
+      "UnauthRoleName": "amplify-frinight-dev-225237-unauthRole",
+      "StackName": "amplify-frinight-dev-225237",
+      "StackId": "arn:aws:cloudformation:eu-west-1:230636624958:stack/amplify-frinight-dev-225237/9a774fc0-0a08-11ed-9c4f-0216e6c64b93",
+      "AmplifyAppId": "d1re10nno7o7dp"
+    }
+  }
+}

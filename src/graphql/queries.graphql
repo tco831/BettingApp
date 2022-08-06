@@ -1,0 +1,30 @@
+# this is an auto generated file. This will be overwritten
+query GetBet($id: ID!) {
+  getBet(id: $id) {
+    id
+    stake
+    time
+    timestamp
+    coords
+    description
+    outcome
+    createdAt
+    updatedAt
+  }
+}
+query ListBets($filter: ModelBetFilterInput, $limit: Int, $nextToken: String) {
+  listBets(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      stake
+      time
+      timestamp
+      coords
+      description
+      outcome
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
