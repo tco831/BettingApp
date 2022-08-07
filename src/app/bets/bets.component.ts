@@ -1,5 +1,6 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { APIService, Bet } from '/Users/Turlough/frinight/src/app/API.service'
+//import { APIService, Bet } from '/Users/Turlough/frinight/src/app/API.service'
+import { APIService, Bet } from '../API.service'
 import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Amplify } from '@aws-amplify/core'
@@ -75,10 +76,10 @@ export class BetsComponent implements OnInit {
     console.log(this.distanceBetweenTwoCoords(this.currentLocation.latitude, this.currentLocation.longitude, bet.coords[0], bet.coords[1]))
     if (this.distanceBetweenTwoCoords(this.currentLocation.latitude, this.currentLocation.longitude, bet.coords[0], bet.coords[1]) < 250) {
       this.deleteBet(bet);
-      let stake = bet.stake;
+      /* let stake = bet.stake;
       let time = bet.time;
-      let description = bet.description;
-      this.createBet(stake, time, description, false);
+      let description = bet.description; */
+      this.createBet(bet.stake, bet.time, bet.description, false);
     } else {
       console.log("you need to be closer")
     }
