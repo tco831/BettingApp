@@ -10,25 +10,26 @@ import { Location } from '../location';
 export class MapsComponent implements OnInit {
 
   @Output() sender = new EventEmitter();
-
+  
+  //Assign marker icon, targetLocation, and currentLocation to current co-ordinates
   constructor(){
     if (navigator)
     {
     navigator.geolocation.getCurrentPosition( pos => {
-        this.currentLocation.latitude = +pos.coords.latitude;
-        this.currentLocation.longitude = +pos.coords.longitude;
-        this.markers[0].lat = +pos.coords.latitude;
-        this.markers[0].lng = +pos.coords.longitude;
+      this.markers[0].lat = this.targetLocation.latitude = this.currentLocation.latitude = +pos.coords.latitude;
+      this.markers[0].lng = this.targetLocation.longitude = this.currentLocation.longitude = +pos.coords.longitude;
+      //this.markers[0].lat = +pos.coords.latitude;
+      //this.markers[0].lng = +pos.coords.longitude;
       });
     }
   }
 
+  //Send location data to bets component
   ngOnInit(): void {
-    //Send location data to bets component
     this.sender.emit(this.targetAndCurrent);
   }
 
-  //Location variables
+  //create location objects
   targetLocation = {} as Location; 
   currentLocation = {} as Location;
   targetAndCurrent = {
@@ -36,7 +37,7 @@ export class MapsComponent implements OnInit {
     current: this.currentLocation
   }
   
-  //map calibration settings
+  //calibrate map and marker
   zoom: number = 15;
   lastInfoWindow: any;
   markers: any[] = [
@@ -48,7 +49,7 @@ export class MapsComponent implements OnInit {
     }
   ]
 
-  //Marker event data
+  //Marker event functions
   markerClicked(marker: any, index: number, infoWindowRef: any) {
     if (this.lastInfoWindow) {
       this.lastInfoWindow.close();
@@ -68,8 +69,8 @@ export class MapsComponent implements OnInit {
   markerDragEnd($event: any, index: number) {
     this.targetLocation.latitude = $event.coords.lat; 
     this.targetLocation.longitude = $event.coords.lng;
-    console.log($event.coords.lat);
-    console.log($event.coords.lng);
+    console.log($event.coords.lat, $event.coords.lng);
+    //console.log($event.coords.lng);
   }
 } 
 
