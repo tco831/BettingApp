@@ -73,12 +73,8 @@ export class BetsComponent implements OnInit {
   }
 
   async adhocUpdater(bet:any) {
-    console.log(this.distanceBetweenTwoCoords(this.currentLocation.latitude, this.currentLocation.longitude, bet.coords[0], bet.coords[1]))
     if (this.distanceBetweenTwoCoords(this.currentLocation.latitude, this.currentLocation.longitude, bet.coords[0], bet.coords[1]) < 250) {
       this.deleteBet(bet);
-      /* let stake = bet.stake;
-      let time = bet.time;
-      let description = bet.description; */
       this.createBet(bet.stake, bet.time, bet.description, false);
     } else {
       console.log("you need to be closer")
