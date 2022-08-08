@@ -52,7 +52,7 @@
                             <p>5. If you're happy with the details, bet you will using the button below</p>
                         </div>
                         <div>
-                            <button [disabled]="loginForm.invalid" (click)="createBet(stake.value, date.value, description.value, true)">Submit</button>
+                            <button [disabled]="loginForm.invalid" (click)="createBet(stake.value, date.value, description.value, true)">Place Bet</button>
                         </div>
                     </form>
                 </div> 
@@ -95,15 +95,5 @@
         </mat-tab>
 
     </mat-tab-group>
-
 </div>
 
-<!--             <div style="text-align: center">
-                <form>
-                    <input required type="number" #stakeInput placeholder="Enter stake">
-                    <input required type="datetime-local" #datetimeInput placeholder="Enter date">
-                    <input required type="string" #descriptionInput placeholder="Enter description">
-
-                    <button (click)="createBet(stakeInput.value, datetimeInput.value, descriptionInput.value, true)">Place Bet</button>
-                </form>
-            </div> -->

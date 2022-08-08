@@ -25,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { AlertComponent } from './alert/alert.component';
+import { AuthComponent } from './auth/auth.component';
 
 const appRoute: Routes = [
   {path: 'explainer', component: ExplainerComponent},
@@ -39,6 +40,7 @@ const appRoute: Routes = [
     ExplainerComponent,
     BetsComponent,
     AlertComponent,
+    AuthComponent,
     //DateInputComponent,
     //StakeInputComponent,
     //TimeInputComponent,

@@ -46,6 +46,9 @@ export class BetsComponent implements OnInit {
     return d * 1000; // meters
   }
 
+  //could do bet placed using that boolean to determine whether it comes up for the true...
+  //thought it would be good to have the inputs reset after a period...
+
   //Data for bet mutations
   currentTimestamp = Date.now();
   allBets:any[] = [];
@@ -91,27 +94,4 @@ export class BetsComponent implements OnInit {
     let result = await this.api.ListBets();
     this.allBets = result.items;
   }
-
-  //Input validators
-   dateValidator() {
-/*     const today = new Date();
-    if(c.value > today) {
-        return null;
-    } else {
-        return {dateValidator: {valid: false}};
-    } */
-  } 
-
-  stakeValidator() {
-    //number between 1 and 1000
-  }
-
-  descriptionValidator(){
-    //make sure string between length 1 and 30 is input
-  }
-
-  CoordsValidator() {
-    //make sure coords entered via map icon
-  }
-
 }
