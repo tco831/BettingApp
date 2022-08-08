@@ -10,6 +10,11 @@
       "StackName": "amplify-frinight-dev-225237",
       "StackId": "arn:aws:cloudformation:eu-west-1:230636624958:stack/amplify-frinight-dev-225237/9a774fc0-0a08-11ed-9c4f-0216e6c64b93",
       "AmplifyAppId": "d1re10nno7o7dp"
+    },
+    "categories": {
+      "auth": {
+        "frinight6abb4d65": {}
+      }
     }
   }
 }

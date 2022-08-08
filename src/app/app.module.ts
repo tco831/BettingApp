@@ -26,6 +26,7 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { AlertComponent } from './alert/alert.component';
 import { AuthComponent } from './auth/auth.component';
+//import { AmplifyAngularModule, AmplifyService } from "aws-amplify-angular";
 
 const appRoute: Routes = [
   {path: 'explainer', component: ExplainerComponent},
@@ -73,6 +74,7 @@ const appRoute: Routes = [
     FormsModule,
     ReactiveFormsModule,
     NgxMatDatetimePickerModule,
+    //AmplifyAngularModule,
     ],
   providers: [
     DatePipe,

@@ -1,5 +1,11 @@
 {
   "AppSyncApiName": "frinight",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authfrinight6abb4d65",
+      "Outputs.UserPoolId"
+    ]
+  }
 }

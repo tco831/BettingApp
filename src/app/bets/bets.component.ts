@@ -8,6 +8,8 @@ import Auth from '@aws-amplify/auth'
 import { DatePipe } from '@angular/common';
 //import { MatDialog } from '@angular/material';
 import { Location } from '../location';
+import { ChangeDetectorRef } from '@angular/core';
+import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
 
 @Component({
   selector: 'app-bets',
