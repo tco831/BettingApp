@@ -16,6 +16,10 @@ import { Location } from '../location';
 })
 export class BetsComponent implements OnInit {
 
+  loginUser(item:any) {
+    console.warn(item);
+  }
+
   constructor(private api:APIService) {}
 
   async ngOnInit() {
@@ -31,14 +35,14 @@ export class BetsComponent implements OnInit {
 
   // generally used geo measurement function
   distanceBetweenTwoCoords(lat1:number, lon1:number, lat2:number, lon2:number){  
-    var R = 6378.137; // Radius of earth in KM
-    var dLat = lat2 * Math.PI / 180 - lat1 * Math.PI / 180;
-    var dLon = lon2 * Math.PI / 180 - lon1 * Math.PI / 180;
-    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    let R = 6378.137; // Radius of earth in KM
+    let dLat = lat2 * Math.PI / 180 - lat1 * Math.PI / 180;
+    let dLon = lon2 * Math.PI / 180 - lon1 * Math.PI / 180;
+    let a = Math.sin(dLat/2) * Math.sin(dLat/2) +
     Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
     Math.sin(dLon/2) * Math.sin(dLon/2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    var d = R * c;
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    let d = R * c;
     return d * 1000; // meters
   }
 
@@ -73,11 +77,13 @@ export class BetsComponent implements OnInit {
   }
 
   async adhocUpdater(bet:any) {
-    if (this.distanceBetweenTwoCoords(this.currentLocation.latitude, this.currentLocation.longitude, bet.coords[0], bet.coords[1]) < 250) {
+    let withinRange:boolean = this.distanceBetweenTwoCoords(this.currentLocation.latitude, this.currentLocation.longitude, bet.coords[0], bet.coords[1]) < 250;
+    if (withinRange) {
       this.deleteBet(bet);
       this.createBet(bet.stake, bet.time, bet.description, false);
+      alert("Bet successfully validated!")
     } else {
-      console.log("you need to be closer")
+      alert("You need to be within 250 meters of your target!")
     }
   }
 

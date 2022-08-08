@@ -1,30 +1,65 @@
 <h1 class="text-center">BetYouWill</h1>
 
-<div style="padding: 1em">
+<div style="padding: 1em; height: 100;" >
 
     <mat-tab-group [backgroundColor]="'primary'" [color]="'warn'">
         
         <mat-tab [label]="'Place A Bet'" class="tab">
-            <app-maps (sender)="mapsDataImport($event)" ></app-maps>
-            <br>
-            <div style="text-align: center">
-                <input type="number" #stakeInput placeholder="Enter stake">
-                <input type="datetime-local" #datetimeInput placeholder="Enter date">
-                <input type="string" #descriptionInput placeholder="Enter description">
-                <button (click)="createBet(stakeInput.value, datetimeInput.value, descriptionInput.value, true)">Place Bet</button>
+            <div style="width: 50%; float: left;"> 
+                <app-maps (sender)="mapsDataImport($event)" ></app-maps>
             </div>
-            <br>
-            <!-- <div>
-                <mat-slider 
-                thumbLabel
-                min='1'
-                max='100'
-                name='slidervalue'
-                >
-                </mat-slider>
-            </div> -->
-            <div style="text-align:center">
-                <a routerLink="/explainer" routerLinkActive="active" ariaCurrentWhenActive="page">How does this work?</a>
+            <div style="width: 50%; float: right;"> 
+                <div class="container">
+                    <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm.value)">
+                        <div>
+                            <h2>Instructions</h2>
+                            <p>1. Choose a location from the map above</p>
+                            <p>2. Enter your stake of £1–£100 using the slider below</p>
+                            <input 
+                                type="range" 
+                                value="50" 
+                                min="1" 
+                                max="100" 
+                                oninput="this.nextElementSibling.value = this.value"
+                                #stake>
+                                <output>50</output>
+                            <p>3. Choose a date and a time you want to be at that location</p>    
+                            <input 
+                                id="party" 
+                                type="datetime-local" 
+                                name="partydate"
+                                min={{currentTimestamp}} 
+                                max="2024-06-30T16:30"
+                                pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" 
+                                #date="ngModel" 
+                                required ngModel class="input">
+                            <!-- <span class="validity"></span> -->
+                                <br><span *ngIf="date.invalid && date.touched" style="color: red">
+                                    Please enter a valid input for date
+                                </span><br>
+                            <p>4. Name/describe your bet, so you don't forget what it is</p>
+                            <input 
+                                minlength="2" 
+                                type="text" 
+                                required 
+                                #description="ngModel" 
+                                name="name" 
+                                placeholder="Enter name" 
+                                ngModel>
+                                <br><span *ngIf="description.invalid && description.touched" style="color: red">
+                                    Please enter a valid name for your bet
+                                </span><br>
+                            <p>5. If you're happy with the details, bet you will using the button below</p>
+                        </div>
+                        <div>
+                            <button [disabled]="loginForm.invalid" (click)="createBet(stake.value, date.value, description.value, true)">Submit</button>
+                        </div>
+                    </form>
+                </div> 
+                <br>
+                <div style="text-align:center">
+                    <a routerLink="/explainer" routerLinkActive="active" ariaCurrentWhenActive="page">How does this work?</a>
+                </div>
             </div>
         </mat-tab>
 
@@ -32,11 +67,12 @@
             <div *ngFor="let bet of allBets">
                 <div *ngIf="(bet.timestamp>currentTimestamp)">
                     <hr>
-                    <p> Bet name: {{bet.description}} </p>
+                    <p> Bet description: {{bet.description}} </p>
                     <p> Stake: {{bet.stake}} </p>
                     <p> Deadline time: {{bet.time | date:'shortTime' }}</p>
                     <p> Date: {{bet.time | date }} </p>
-                    <p> Time remaining : {{bet.timestamp - currentTimestamp}} </p>
+                    <p *ngIf="(bet.timestamp - currentTimestamp < 3600000)" style="color: red"> Time remaining : {{bet.timestamp - currentTimestamp}} </p>
+                    <p *ngIf="(bet.timestamp - currentTimestamp > 3600000)"> Time remaining : {{bet.timestamp - currentTimestamp}} </p>
                     <p> Coords: {{bet.coords}}</p>
                     <button *ngIf="(bet.timestamp - currentTimestamp < 3600000)" (click)="adhocUpdater(bet)">Validate</button>
                     <button *ngIf="(bet.timestamp - currentTimestamp > 3600000)" (click)="deleteBet(bet)">Cancel</button>
@@ -48,7 +84,7 @@
             <div *ngFor="let bet of allBets">
                 <div *ngIf="bet.timestamp<currentTimestamp">
                     <hr>
-                    <p> Bet name: {{bet.description}} </p>
+                    <p> Bet description: {{bet.description}} </p>
                     <p> Stake: {{bet.stake}} </p>
                     <p> Deadline time: {{bet.time | date:'shortTime' }}</p>
                     <p> Date: {{bet.time | date }}  </p>
@@ -59,3 +95,15 @@
         </mat-tab>
 
     </mat-tab-group>
+
+</div>
+
+<!--             <div style="text-align: center">
+                <form>
+                    <input required type="number" #stakeInput placeholder="Enter stake">
+                    <input required type="datetime-local" #datetimeInput placeholder="Enter date">
+                    <input required type="string" #descriptionInput placeholder="Enter description">
+
+                    <button (click)="createBet(stakeInput.value, datetimeInput.value, descriptionInput.value, true)">Place Bet</button>
+                </form>
+            </div> -->
