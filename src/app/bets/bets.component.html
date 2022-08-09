@@ -99,9 +99,9 @@
           >
             Minutes remaining : {{ (bet.timestamp - currentTimestamp) / 60000 }}
           </p>
-          <p *ngIf="bet.timestamp - currentTimestamp > 3600000">
+          <!-- <p *ngIf="bet.timestamp - currentTimestamp > 3600000">
             Minutes remaining : {{ bet.timestamp - currentTimestamp / 60000 }}
-          </p>
+          </p> -->
           <p>Coords: {{ bet.coords }}</p>
           <button
             *ngIf="bet.timestamp - currentTimestamp < 3600000"
