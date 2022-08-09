@@ -9,3 +9,16 @@
     "amplify/backend/awscloudformation": true
   }
 }
+
+/* {
+  // ...
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
+
+{
+  "eslint.options": { "configFile": "C:/Users/Turlough/frinight/.eslintrc.json" }
+} */
+

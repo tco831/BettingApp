@@ -1,82 +1,28 @@
-.mat-accent .mat-slider-track-fill {
-    background-color: red !important;
-}
-
-.mat-slider-thumb-label {
-    background-color: red !important;
-
-}
-
-.mat-slider-thumb {
-    background-color: red !important;
-}
-
-/* .mat-slider {
-    background-color: red !important;
-}
-
-.mat-slider-thumb {
-    border-color: red;
-    background-color: blue;
-} */
-
-.mat-accent .mat-slider-track-fill {
-    background-color: red !important;
-}
-
-.mat-slider-thumb-label {
-    background-color: red !important;
-
-}
-
-.mat-slider-thumb {
-    background-color: red !important;
-}
-
-
 #gradient_slider .e-slider-track {
-    height: 8px;
-    top: calc(50% - 4px);
-    border-radius: 5px;
-  }
-
-  .mat-slider-thumb {
-	background-color: #AAAAAA !important;
-}
-
-.mat-slider-thumb-label {
-	background-color: #AAAAAA !important;
-}
-
-.mat-slider-track-fill {
-	background-color: #AAAAAA !important;
+  height: 8px;
+  top: calc(50% - 4px);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: blue;
-  }
+  background-color: blue;
+}
 
 .alert-danger {
-    background-color: red;
+  background-color: red;
 }
 
 .alert {
-    color: white;
+  color: white;
 }
 
-/* div {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-} */
-
 .container {
-    display: flex;
-/*     justify-content: center; */
-    border-right: 10px solid transparent;
-  }
+  display: flex;
+  /*     justify-content: center; */
+  border-right: 10px solid transparent;
+}
 
 input {
-    text-align: center;
-    justify-content: center;
-    }
+  text-align: center;
+  justify-content: center;
+}

@@ -8,9 +8,9 @@ describe('ExplainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ExplainerComponent ]
+      declarations: [ExplainerComponent],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ExplainerComponent);
     component = fixture.componentInstance;

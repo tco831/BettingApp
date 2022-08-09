@@ -1,24 +1,8 @@
-
-
-<!-- <amplify-authenticator *ngIf="authState !== 'signedin'"></amplify-authenticator>
-  
-<div *ngIf="authState === 'signedin' && user" class="App"> -->
-<!--     <amplify-sign-out></amplify-sign-out> -->
-<!-- <router-outlet></router-outlet> -->
-<!--     <div>Hi, {{user.username}}</div>
-</div> -->
-
 <amplify-authenticator>
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </amplify-authenticator>
 
-<ng-template
-    amplifySlot="authenticated"
-    let-user="user"
-    let-signOut="signOut">
-        <h1>Welcome {{ user.username }}!</h1>
-        <button (click)="signOut()">Sign Out</button>
+<ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
+  <h1>Welcome {{ user.username }}!</h1>
+  <button (click)="signOut()">Sign Out</button>
 </ng-template>
-
-
-
